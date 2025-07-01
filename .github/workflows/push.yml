@@ -1,0 +1,26 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main # Or your default branch, e.g., master, develop
+
+jobs:
+  clone_with_kart:
+    runs-on: ubuntu-latest # Or a different runner if needed
+
+    steps:
+
+    - name: Set up Kart
+      run: |
+        # Install Kart - these commands are for Ubuntu/Debian, adjust for other runners
+        sudo apt-get update
+        sudo apt-get install -y wget curl gnupg
+        curl -fsSL https://apt.koordinates.com/apt/kart.gpg | sudo gpg --dearmor -o /usr/share/keyrings/kart-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/kart-archive-keyring.gpg] https://apt.koordinates.com/apt stable main" | sudo tee /etc/apt/sources.list.d/kart.list
+        sudo apt-get update
+        sudo apt-get install -y kart
+
+    - name: Check kart
+      run: |
+        kart version
