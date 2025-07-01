@@ -3,20 +3,18 @@ name: Test
 on: [push]
 
 jobs:
-  clone_with_kart:
-    runs-on: ubuntu-latest # Or a different runner if needed
+  clone:
+    runs-on: ubuntu-latest 
 
     steps:
 
     - name: Set up Kart
       run: |
-        # Install Kart - these commands are for Ubuntu/Debian, adjust for other runners
         sudo apt-get update
-        sudo apt-get install -y wget curl gnupg
-        curl -fsSL https://apt.koordinates.com/apt/kart.gpg | sudo gpg --dearmor -o /usr/share/keyrings/kart-archive-keyring.gpg
-        echo "deb [signed-by=/usr/share/keyrings/kart-archive-keyring.gpg] https://apt.koordinates.com/apt stable main" | sudo tee /etc/apt/sources.list.d/kart.list
-        sudo apt-get update
-        sudo apt-get install -y kart
+        sudo apt-get install -y wget
+        wget https://github.com/koordinates/kart/releases/download/v0.16.1/Kart-0.16.1-linux-x86_64.tar.gz 
+        tar xvf Kart-0.16.1-linux-x86_64.tar.gz
+        echo "$PWD/Kart-0.16.1-linux-x86_64/kart/" >> $GITHUB_PATH
 
     - name: Check kart
       run: |
