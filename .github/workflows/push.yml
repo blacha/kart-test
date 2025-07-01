@@ -1,9 +1,6 @@
 name: Test
 
-on:
-  push:
-    branches:
-      - main # Or your default branch, e.g., master, develop
+on: [push]
 
 jobs:
   clone_with_kart:
