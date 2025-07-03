@@ -23,7 +23,7 @@ jobs:
       run: |
         echo $PWD
         ls -alh
-        kart clone ${GITHUB_REPOSITORY}
+        kart clone https://github.com/${GITHUB_REPOSITORY}.git
         kart checkout ${GITHUB_SHA}
 
     - name: Kart - Status
