@@ -8,6 +8,10 @@ jobs:
 
     steps:
 
+    
+    - name: Checkout
+      uses: actions/checkout@v4
+  
     - name: Kart - Setup
       run: |
         cd ${{ runner.temp }}/ # ensure we don't write anything into the working dir
@@ -21,10 +25,7 @@ jobs:
 
     - name: Kart - Clone
       run: |
-        echo $PWD
-        ls -alh
-        kart clone https://github.com/${GITHUB_REPOSITORY}.git
-        kart checkout ${GITHUB_SHA}
+        kart export nz_vineyard_polygons_topo_150k ./out.gpkg
 
     - name: Kart - Status
       run: |
