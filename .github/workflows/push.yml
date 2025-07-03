@@ -8,7 +8,7 @@ jobs:
 
     steps:
 
-    - name: Set up Kart
+    - name: Kart - Setup
       run: |
         sudo apt-get update
         sudo apt-get install -y wget
@@ -16,15 +16,16 @@ jobs:
         tar xvf Kart-0.16.1-linux-x86_64.tar.gz
         echo "$PWD/Kart-0.16.1-linux-x86_64/kart/" >> $GITHUB_PATH
 
-    - name: Check kart
+    - name: Kart - Version
       run: |
         kart --version
 
-    - name: Clone repository
+    - name: Kart - Clone
       run: |
-        kart clone ${GITHUB_REPOSITORY} .
+        ls -alh
+        kart clone ${GITHUB_REPOSITORY}
         kart checkout ${GITHUB_SHA}
 
-    - name: Check status
+    - name: Kart - Status
       run: |
         kart status
