@@ -19,3 +19,12 @@ jobs:
     - name: Check kart
       run: |
         kart --version
+
+    - name: Clone repository
+      run: |
+        kart clone ${GITHUB_REPOSITORY} .
+        kart checkout ${GITHUB_SHA}
+
+    - name: Check status
+      run: |
+        kart status
