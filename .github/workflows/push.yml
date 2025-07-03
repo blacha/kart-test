@@ -34,3 +34,12 @@ jobs:
     - name: Check Geopackage
       run: |
         ls -alh out.gpkg
+    
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+
+    - name: Check geopackage
+      run: 
+        node index.ts
