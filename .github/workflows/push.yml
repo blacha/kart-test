@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        bare: true
+        fetch-depth: 1
   
     - name: Kart - Setup
       run: |
@@ -27,8 +27,10 @@ jobs:
 
     - name: Kart - Clone
       run: |
-        kart export nz_vineyard_polygons_topo_150k ./out.gpkg
+        git clone --bare . bare/
+        cd bare/
+        kart export nz_vineyard_polygons_topo_150k ../out.gpkg
 
-    - name: Kart - Status
+    - name: Check Geopackage
       run: |
-        kart status
+        ls -alh out.gpkg
