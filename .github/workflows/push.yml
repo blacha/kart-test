@@ -11,6 +11,8 @@ jobs:
     
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        bare: true
   
     - name: Kart - Setup
       run: |
