@@ -18,4 +18,4 @@ jobs:
 
     - name: Check kart
       run: |
-        kart version
+        kart --version
