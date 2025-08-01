@@ -7,39 +7,36 @@ jobs:
     runs-on: ubuntu-latest 
 
     steps:
-
-    
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        sparse-checkout: |
+          /*
+          !nz_vineyard_polygons_topo_150k/.table-dataset/feature
+        sparse-checkout-cone: true
         fetch-depth: 1
-  
-    - name: Kart - Setup
-      run: |
-        cd ${{ runner.temp }}/ # ensure we don't write anything into the working dir
-        wget https://github.com/koordinates/kart/releases/download/v0.16.1/Kart-0.16.1-linux-x86_64.tar.gz
-        tar xvf Kart-0.16.1-linux-x86_64.tar.gz
-        echo "$PWD/Kart-0.16.1-linux-x86_64/kart/" >> $GITHUB_PATH
 
     - name: Kart - Version
-      run: |
-        kart --version
-
-    - name: Kart - Clone
-      run: |
-        git clone --bare . bare/
-        cd bare/
-        kart export nz_vineyard_polygons_topo_150k ../out.gpkg
-
-    - name: Check Geopackage
-      run: |
-        ls -alh out.gpkg
-    
-    - name: Setup Node
-      uses: actions/setup-node@v4
+      uses: docker://ghcr.io/linz/action-kart:v0.1.0
       with:
-        node-version: '24'
+        run: |
+          kart --version
 
-    - name: Check geopackage
-      run: 
-        node index.ts
+    # - name: Kart - Clone
+    #   run: |
+    #     git clone --bare . bare/
+    #     cd bare/
+    #     kart export nz_vineyard_polygons_topo_150k ../out.gpkg
+
+    # - name: Check Geopackage
+    #   run: |
+    #     ls -alh out.gpkg
+    
+    # - name: Setup Node
+    #   uses: actions/setup-node@v4
+    #   with:
+    #     node-version: '24'
+
+    # - name: Check geopackage
+    #   run: 
+    #     node index.ts
