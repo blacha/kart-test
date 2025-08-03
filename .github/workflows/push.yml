@@ -13,7 +13,7 @@ jobs:
         sparse-checkout: |
           /*
           !nz_vineyard_polygons_topo_150k/.table-dataset/feature
-        sparse-checkout-cone: true
+        sparse-checkout-cone-mode: false
         fetch-depth: 1
 
     - name: Kart - Version
