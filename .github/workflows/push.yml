@@ -29,10 +29,10 @@ jobs:
     - name: Kart - Clone
       run: |
         # Convert the repo to bare so kart can export from it
-        git config --bool core.bare true
+        git clone --bare .git .git-bare
 
-        kart -C .git export nz_topo_map_sheet nz_topo_map_sheet.gpkg
-        kart -C .git export nz_vineyard_polygons_topo_150k nz_vineyard_polygons_topo_150k.gpkg
+        kart -C .git-bare export nz_topo_map_sheet nz_topo_map_sheet.gpkg
+        kart -C .git-bare export nz_vineyard_polygons_topo_150k nz_vineyard_polygons_topo_150k.gpkg
 
     - name: Check Geopackages
       run: |
