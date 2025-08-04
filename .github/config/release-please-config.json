@@ -1,7 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "packages": {
-    "nz_vineyard_polygons_topo_150k": { "release-type": "simple" }
+    "nz_vineyard_polygons_topo_150k": { "release-type": "simple" },
+    "nz_topo_map_sheet": { "release-type": "simple" }
   },
   "release-type": "",
   "plugins": []
