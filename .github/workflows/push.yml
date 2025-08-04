@@ -34,9 +34,6 @@ jobs:
         kart -C .git export nz_topo_map_sheet nz_topo_map_sheet.gpkg
         kart -C .git export nz_vineyard_polygons_topo_150k nz_vineyard_polygons_topo_150k.gpkg
 
-        # Reset it back to normal
-        git config --bool core.bare false
-
     - name: Check Geopackages
       run: |
         ls -alh *.gpkg
