@@ -28,15 +28,27 @@ jobs:
 
     - name: Kart - Clone
       run: |
-        git clone --bare .git .git-bare
-        
-        kart -C .git-bare export nz_topo_map_sheet nz_topo_map_sheet.gpkg
-        kart -C .git-bare export nz_vineyard_polygons_topo_150k nz_vineyard_polygons_topo_150k.gpkg
+        # Convert the repo to bare so kart can export from it
+        git config --bool core.bare true
+
+        kart -C .git export nz_topo_map_sheet nz_topo_map_sheet.gpkg
+        kart -C .git export nz_vineyard_polygons_topo_150k nz_vineyard_polygons_topo_150k.gpkg
+
+        # Reset it back to normal
+        git config --bool core.bare false
 
     - name: Check Geopackages
       run: |
         ls -alh *.gpkg
+
+    - name: Convert to parquet
+      run: |
+        gdal vector convert nz_topo_map_sheet.gpkg nz_topo_map_sheet.parquet --lco compression=zstd --lco compression_level=15
+        gdal vector convert nz_vineyard_polygons_topo_150k.gpkg nz_vineyard_polygons_topo_150k.parquet --lco compression=zstd --lco compression_level=15
     
+    - name: Check parquet
+      run: |
+        ls -alh *.parquet
     # - name: Setup Node
     #   uses: actions/setup-node@v4
     #   with:
