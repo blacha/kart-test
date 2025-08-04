@@ -49,11 +49,7 @@ jobs:
     - name: Check parquet
       run: |
         ls -alh *.parquet
-    # - name: Setup Node
-    #   uses: actions/setup-node@v4
-    #   with:
-    #     node-version: '24'
 
-    # - name: Check geopackage
-    #   run: 
-    #     node index.ts
+    - name: Run tests
+      run: |
+        uv run scripts/validate-map-sheet.py
