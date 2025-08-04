@@ -1,10 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "packages": {
-    "nz_vineyard_polygons_topo_150k": { "release-type": "simple" },
-    "nz_topo_map_sheet": { "release-type": "simple" }
+    "nz_vineyard_polygons_topo_150k": {
+      "package-name": "nz_vineyard_polygons_topo_150k",
+      "release-type": "simple"
+    },
+    "nz_topo_map_sheet": {
+      "package-name": "nz_topo_map_sheet",
+      "release-type": "simple"
+    }
   },
-  "include-component-in-tag": true,
-  "release-type": "",
-  "plugins": []
+  "include-component-in-tag": true
 }
