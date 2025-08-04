@@ -24,6 +24,8 @@ jobs:
       run: |
         kart --version
 
+        ls -alh
+
     - name: Kart - Clone
       run: |
         kart clone .git kart-working
