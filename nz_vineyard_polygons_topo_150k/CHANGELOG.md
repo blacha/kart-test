@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/blacha/kart-test/compare/nz_vineyard_polygons_topo_150k-v0.3.0...nz_vineyard_polygons_topo_150k-v0.3.1) (2025-08-04)
+
+
+### Bug Fixes
+
+* correct overlapping poly ([de5baf6](https://github.com/blacha/kart-test/commit/de5baf6a4ac3713d1c3a520368c7c507d4c32465))
+
 ## [0.3.0](https://github.com/blacha/kart-test/compare/nz_vineyard_polygons_topo_150k-v0.2.0...nz_vineyard_polygons_topo_150k-v0.3.0) (2025-08-04)
 
 
