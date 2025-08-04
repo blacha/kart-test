@@ -6,6 +6,9 @@ jobs:
   clone:
     runs-on: ubuntu-latest 
 
+    container:
+      image: ghcr.io/linz/action-kart:v0.1.0
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -18,17 +21,13 @@ jobs:
         fetch-depth: 1
 
     - name: Kart - Version
-      uses: docker://ghcr.io/linz/action-kart:v0.1.0
-      with:
-        run: |
-          kart --version
+      run: |
+        kart --version
 
     - name: Kart - Clone
-      uses: docker://ghcr.io/linz/action-kart:v0.1.0
-      with:
-        run: |
-          kart clone .git kart-working
-          kart -C kart-working data ls
+      run: |
+        kart clone .git kart-working
+        kart -C kart-working data ls
 
     # - name: Check Geopackage
     #   run: |
