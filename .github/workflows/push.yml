@@ -18,7 +18,7 @@ jobs:
           !nz_topo_map_sheet/.table-dataset/feature
           !nz_vineyard_polygons_topo_150k/.table-dataset/feature
         sparse-checkout-cone-mode: false
-        fetch-depth: 1
+        fetch-depth: 0
 
     - name: Kart - Version
       run: |
