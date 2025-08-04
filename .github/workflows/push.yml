@@ -12,6 +12,7 @@ jobs:
       with:
         sparse-checkout: |
           /*
+          !nz_topo_map_sheet/.table-dataset/feature
           !nz_vineyard_polygons_topo_150k/.table-dataset/feature
         sparse-checkout-cone-mode: false
         fetch-depth: 1
@@ -22,11 +23,12 @@ jobs:
         run: |
           kart --version
 
-    # - name: Kart - Clone
-    #   run: |
-    #     git clone --bare . bare/
-    #     cd bare/
-    #     kart export nz_vineyard_polygons_topo_150k ../out.gpkg
+    - name: Kart - Clone
+      uses: docker://ghcr.io/linz/action-kart:v0.1.0
+      with:
+        run: |
+          kart clone .git kart-working
+          kart -C kart-working data ls
 
     # - name: Check Geopackage
     #   run: |
