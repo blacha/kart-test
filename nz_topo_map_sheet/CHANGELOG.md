@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/blacha/kart-test/compare/nz_topo_map_sheet-v0.2.0...nz_topo_map_sheet-v0.3.0) (2025-08-04)
+
+
+### Features
+
+* inital import ([b1fd18f](https://github.com/blacha/kart-test/commit/b1fd18fe3681457dbada5419aebeadcc437d280f))
+
 ## [0.2.0](https://github.com/blacha/kart-test/compare/v0.1.0...v0.2.0) (2025-08-04)
 
 
